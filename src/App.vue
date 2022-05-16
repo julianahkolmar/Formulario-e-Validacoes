@@ -225,6 +225,7 @@ body {
   justify-content: space-between;
   background-color: white;
   font-size: 12px;
+  font-weight:700px;
 }
 
 #full-box {
