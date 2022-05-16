@@ -460,7 +460,6 @@ a:hover .arrow:before {
   }
 }
 
-.image {}
 
 .setaEsquerda {
   margin-left: -22%;
