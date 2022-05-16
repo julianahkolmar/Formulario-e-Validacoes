@@ -3,16 +3,16 @@
     <div style="margin-right: auto;
     margin-left: auto;" class="cabecalho">
       <a class="setaEsquerda" href="#" type="image">
-      <img style="display: flex;" src="https://img.icons8.com/ios-glyphs/30/ffffff/arrow-pointing-left--v2.png"/>
-     </a>
+        <img style="display: flex;" src="https://img.icons8.com/ios-glyphs/30/ffffff/arrow-pointing-left--v2.png" />
+      </a>
       <div style="margin-left: 60%; margin-right: auto">FORMULÁRIO</div>
     </div>
     <div>
-  <div class="container">
-    <div class="Loading"></div>
-  </div>  
-  </div>
-  <h1>Seja bem-vindo</h1>
+      <div class="container">
+        <div class="Loading"></div>
+      </div>
+    </div>
+    <h1>Seja bem-vindo</h1>
     <form action="/action_page.php">
       <label for="dados">Dados do contato:</label>
       <p style="font-weight: 600px font-size: 14px; margin-bottom: 5%;">
@@ -24,17 +24,8 @@
       <div class id="forms">
         <div class id="full-box">
           <label class id="label-style" for="nomeCompleto">NOME COMPLETO</label>
-          <input
-            placeholder="Insira seu nome"
-            type="text"
-            pattern="([aA-zZ]+)"
-            ref="nome"
-            v-model="nome"
-            id="nome"
-            name="nome"
-            required
-            @blur="validarNome"
-          />
+          <input placeholder="Insira seu nome" type="text" pattern="([aA-zZ]+)" ref="nome" v-model="nome" id="nome"
+            name="nome" required @blur="validarNome" />
           <p v-if="nomeError" class="textError">Nome não pode ser vazio</p>
           <p v-if="nomeLengthError" class="textError">
             Nome deve possuir, no mínimo, 3 caracteres
@@ -42,87 +33,39 @@
         </div>
         <div class id="half-box">
           <div class="input-container">
-          <label for="cadastrarEmail">EMAIL</label>
-          <input
-            placeholder="Insira seu email"
-            type="email"
-            v-model="email"
-            ref="email"
-            required
-            id="email"
-            name="email"
-            @blur="validarEmail"
-          />
-         </div>
+            <label for="cadastrarEmail">EMAIL</label>
+            <input placeholder="Insira seu email" type="email" v-model="email" ref="email" required id="email"
+              name="email" @blur="validarEmail" />
+          </div>
           <p v-if="emailError" class="textError">Email não pode ser vazio</p>
         </div>
         <div class id="half-box">
-          <label class id="label-style" for="confirmarEmail"
-            >CONFIRMAR EMAIL</label
-          >
-          <input
-            placeholder="Confirme seu email"
-            type="email"
-            ref="confemail"
-            required
-            v-model="cemail"
-            id="confemail"
-            name="confemail"
-            @blur="validarConfemail"
-          />
+          <label class id="label-style" for="confirmarEmail">CONFIRMAR EMAIL</label>
+          <input placeholder="Confirme seu email" type="email" ref="confemail" required v-model="cemail" id="confemail"
+            name="confemail" @blur="validarConfemail" />
           <p v-if="cemailError" class="textError">Email não corresponde</p>
         </div>
         <div class id="half-box">
           <label class id="label-style" for="digitarCPF">CPF</label>
-          <input
-            placeholder="Digite seu CPF"
-            type="text"
-            v-mask="'###.###.###-##'"
-            id="cpf"
-            name="cpf"
-            v-model="cpf"
-            ref="cpf"
-            required
-            maxlength="14"
-            minlength="11"
-            @blur="validarCPF"
-          />
+          <input placeholder="Digite seu CPF" type="text" v-mask="'###.###.###-##'" id="cpf" name="cpf" v-model="cpf"
+            ref="cpf" required maxlength="14" minlength="11" @blur="validarCPF" />
           <p v-if="cpfError" class="textError">CPF não pode ser vazio</p>
           <p v-if="cpfLengthError" class="textError">CPF inválido</p>
           <p v-if="cpfOk" class="textValidate">CPF válido</p>
         </div>
         <div class id="half-box">
           <label class id="label-style" for="digitarCelular">CELULAR</label>
-          <input
-            required
-            placeholder="(99) 99999-9999"
-            type="tel"
-            v-mask="'(##) #####-####'"
-            ref="tel"
-            v-model="celular"
-            id="tel"
-            name="tel"
-            @blur="validarCelular"
-          />
+          <input required placeholder="(99) 99999-9999" type="tel" v-mask="'(##) #####-####'" ref="tel"
+            v-model="celular" id="tel" name="tel" @blur="validarCelular" />
           <p v-if="celularError" class="textError">
             Número de celular não pode ser vazio
           </p>
           <p v-if="celularLengthError" class="textError">Celular inválido</p>
         </div>
         <div>
-          <label class id="style-nasc" for="dataNasc" max="2004-05-10"
-            >DATA DE NASCIMENTO</label
-          >
-          <input
-            id="nasc"
-            type="date"
-            ref="datanasc"
-            v-model="nasc"
-            placeholder="Digite sua data de nascimento"
-            name="celular"
-            class="form-control"
-            @blur="validarNasc"
-          />
+          <label class id="style-nasc" for="dataNasc" max="2004-05-10">DATA DE NASCIMENTO</label>
+          <input id="nasc" type="date" ref="datanasc" v-model="nasc" placeholder="Digite sua data de nascimento"
+            name="celular" class="form-control" @blur="validarNasc" />
           <p v-if="nascError" class="textError">
             Data de nascimento não pode ser vazia
           </p>
@@ -133,7 +76,7 @@
     </form>
     <form>
       <div class="emailSms">
-        <input type="checkbox" id="text" name="Email e SMS"/>
+        <input type="checkbox" id="text" name="Email e SMS" />
         <label for="EmailSMS">Email e SMS</label>
       </div>
       <div class="whatsApp">
@@ -146,12 +89,12 @@
       iaculis nec nibh nisl tellus.
       Amet tellus nunc dolor magna aliquet risus. Habitant neque, id risus diam.
     </p>
-   <a href="#">
-   Continuar
-    <div class="arrow-wrapper">
+    <a href="#">
+      Continuar
+      <div class="arrow-wrapper">
         <div class="arrow"></div>
-    </div>
-</a>
+      </div>
+    </a>
     <footer></footer>
   </div>
 </template>
@@ -188,15 +131,13 @@ export default {
     validarConfemail() {
       this.cemailError = this.cemail !== this.email;
     },
-    validarCPF() {
-      this.cpfError = this.cpf === "";
-      this.cpfLengthError = this.cpf.length !== 11 && this.cpf.length > 0;
+     validarCPF() {
+      this.cpfSemMascara = this.cpf.replace(/[^0-9]/g, '')
+      this.cpfError = this.cpfSemMascara === "";
+      this.cpfLengthError = this.cpfSemMascara.length !== 11 && this.cpfSemMascara.length > 0;
 
-      this.soma = 0;
-      this.resto;
       if (
-        [
-          "00000000000",
+        ["00000000000",
           "11111111111",
           "22222222222",
           "33333333333",
@@ -206,31 +147,32 @@ export default {
           "77777777777",
           "88888888888",
           "99999999999",
-        ].indexOf(this.cpf) !== -1
+        ].indexOf(this.cpfSemMascara) !== -1
       )
-        return this.cpfLengthError;
+        this.cpfLengthError = true
 
-      /*for (let i = 1; i <= 9; i++)
+      this.soma = 0;
+      this.resto;
+      this.i;
+      for (let i = 1; i <= 9; i++)
         this.soma =
-          this.soma + parseInt(this.cpf.substring(i - 1, i)) * (11 - i);
+          this.soma + parseInt(this.cpfSemMascara.substring(i - 1, i)) * (11 - i);
       this.resto = (this.soma * 10) % 11;
       if (this.resto == 10 || this.resto == 11) this.resto = 0;
-      if (this.resto != parseInt(this.cpf.substring(9, 10)))
-        return this.cpfLengthError;
+      if (this.resto != parseInt(this.cpfSemMascara.substring(9, 10)))
+        this.cpfLengthError = true;
       this.soma = 0;
 
       for (let i = 1; i <= 10; i++)
         this.soma =
-          this.soma + parseInt(this.cpf.substring(i - 1, i)) * (12 - i);
+          this.soma + parseInt(this.cpfSemMascara.substring(i - 1, i)) * (12 - i);
 
       this.resto = (this.soma * 10) % 11;
 
       if (this.resto == 10 || this.resto == 11) this.resto = 0;
 
-      if (this.resto != parseInt(this.cpf.substring(10, 11)))
-        return this.cpfLengthError;
-
-      return this.cpfOk;*/
+      if (this.resto != parseInt(this.cpfSemMascara.substring(10, 11)))
+        this.cpfLengthError = true
     },
     validarCelular() {
       this.celularError = this.celular === "";
@@ -274,8 +216,7 @@ export default {
 
 body {
   background-color: #e82c54;
-  transition: 2s;
-  background-position-x: 38%;
+
 }
 
 #forms {
@@ -328,7 +269,7 @@ a {
   --arrow-stroke: 2px;
   box-sizing: border-box;
   text-decoration: none;
-    font-family: 'Inter';
+  font-family: 'Inter';
   font-style: normal;
   border: 0;
   border-radius: 20px;
@@ -373,8 +314,6 @@ a .arrow::before {
   transform: rotate(-45deg);
 }
 
-
-
 a:hover .arrow {
   background: var(--secondary-color);
 }
@@ -393,18 +332,18 @@ a:hover .arrow:before {
 }
 
 .cabecalho {
-    display: flex;
-    justify-content: center;
-    width: 200%;
-    padding: 2%;
-    color: white;
-    font-family: 'Inter';
-    font-style: normal;
-    font-display: swap;
-    font-size: 15px;
-    margin-top: -50%;
+  display: flex;
+  justify-content: center;
+  width: 200%;
+  padding: 2%;
+  color: white;
+  font-family: 'Inter';
+  font-display: swap;
+  font-size: 15px;
+  margin-top: -50%;
 
 }
+
 .textError {
   color: red;
   font-family: 'Inter';
@@ -420,13 +359,14 @@ a:hover .arrow:before {
   font-size: 10px;
   margin-top: -1%;
 }
+
 .whatsApp {
   flex: 1 1 100%;
   position: relative;
   font-size: 14px;
 }
 
-.emailSms  {
+.emailSms {
   flex: 1 1 100%;
   position: relative;
   font-size: 14px;
@@ -434,15 +374,15 @@ a:hover .arrow:before {
 
 
 .container {
-    position: relative;
-    width: 118%;
-    margin-top: 10%;
-    margin-left: -7%;
-    margin-bottom: 10%;
-    padding: 10px 50px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background: #fff;
+  position: relative;
+  width: 120%;
+  margin-top: 10%;
+  margin-left: -9%;
+  margin-bottom: 10%;
+  padding: 10px 50px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: #fff;
 
 }
 
@@ -465,18 +405,24 @@ a:hover .arrow:before {
   height: 100%;
   border-radius: 4px;
   box-shadow: 0 0 5px rgba(0, 0, 0, .2);
-  animation: load 5s;
-   animation-iteration-count: 1;
-   animation-timing-function: linear ;
-
+  animation: load 2s;
+  animation-fill-mode: forwards;
 }
+
 @keyframes load {
-  from { width: 0; background: #ee4b6e;}
-  to { width: 50%; background: #ee4b6e;}
+  from {
+    width: 0;
+    background: #ee4b6e;
+  }
+
+  to {
+    width: 50%;
+    background: #ee4b6e;
+  }
 
 }
 
- /*50% {
+/*50% {
     width: 50%;
     background: #e82c54;
   }
@@ -489,34 +435,36 @@ a:hover .arrow:before {
   100% {
     width: 100%;
     background: #494d5f;
-  }*/ 
+  }*/
 
 @keyframes pulse {
   0% {
     background: #a28089;
   }
-  
+
   25% {
     background: #a0d2eb;
   }
-  
+
   50% {
     background: #ffa8b6;
   }
-  
+
   75% {
     background: #d0bdf4;
   }
-  
+
   100% {
     background: #494d5f;
   }
 }
 
+.image {}
+
 .setaEsquerda {
-  margin-left: -22%; 
-  width: 20px; 
-  height: 20px; 
+  margin-left: -22%;
+  width: 20px;
+  height: 20px;
   margin-top: -0.5%;
 }
 
@@ -532,6 +480,6 @@ h1 {
   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
   font-style: normal;
   font-variant: normal;
-  
+
 }
 </style>
