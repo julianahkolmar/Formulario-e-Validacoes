@@ -405,13 +405,13 @@ a:hover .arrow:before {
   height: 100%;
   border-radius: 4px;
   box-shadow: 0 0 5px rgba(0, 0, 0, .2);
-  animation: load 2s;
+  animation: load 2s ease-in-out;
   animation-fill-mode: forwards;
 }
 
 @keyframes load {
   from {
-    width: 0;
+    width: 0%;
     background: #ee4b6e;
   }
 
