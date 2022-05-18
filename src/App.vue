@@ -465,7 +465,7 @@ a:hover .arrow:before {
   margin-left: -22%;
   width: 20px;
   height: 20px;
-  margin-top: -0.5%;
+  margin-top: -0.6%;
 }
 
 .emailSMS input,
@@ -482,4 +482,5 @@ h1 {
   font-variant: normal;
 
 }
+
 </style>
