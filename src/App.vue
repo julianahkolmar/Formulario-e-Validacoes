@@ -185,7 +185,7 @@ export default {
     },
   },
     logUsuario:() => {
-        axios.get('http://localhost:8082/#')
+        axios.get('https://api.thecatapi.com/v1/images/search')
         .then(response => {
           console.log(response.data)
         })
