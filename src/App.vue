@@ -119,9 +119,9 @@ export default {
       cpfLengthError: false,
       celularError: false,
       celularLengthError: false,
-      nascError: false, 
+      nascError: false,
     };
-    
+
   },
   methods: {
     validarNome() {
@@ -184,16 +184,16 @@ export default {
       this.nascError = this.nascError === "";
     },
   },
-    logUsuario:() => {
-        axios.get('https://api.thecatapi.com/v1/images/search')
-        .then(response => {
-          console.log(response.data)
-        })
-        
-        .catch(error => {
-          console.log('TODO ERRO NA REQUISIÇÃO VAI AQUI', error)
-    })
-    }
+  logUsuario: () => {
+    axios.get('https://api.thecatapi.com/v1/images/search')
+      .then(response => {
+        console.log(response.data)
+      })
+
+      .catch(error => {
+        console.log('TODO ERRO NA REQUISIÇÃO VAI AQUI', error)
+      })
+  }
 };
 </script>
 
@@ -470,7 +470,6 @@ a:hover .arrow:before {
     background: #494d5f;
   }
 }
-
 
 .setaEsquerda {
   margin-left: -22%;
