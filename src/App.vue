@@ -51,7 +51,6 @@
             ref="cpf" required maxlength="14" minlength="11" @blur="validarCPF" />
           <p v-if="cpfError" class="textError">CPF não pode ser vazio</p>
           <p v-if="cpfLengthError" class="textError">CPF inválido</p>
-          <p v-if="cpfOk" class="textValidate">CPF válido</p>
         </div>
         <div class id="half-box">
           <label class id="label-style" for="digitarCelular">CELULAR</label>
@@ -100,8 +99,11 @@
 </template>
 
 <script>
+
+import axios from "axios"
 export default {
   data: function () {
+    console.log('CHEGOU AQUI.', this.$data)
     return {
       nome: "",
       email: "",
@@ -117,8 +119,9 @@ export default {
       cpfLengthError: false,
       celularError: false,
       celularLengthError: false,
-      nascError: false,
+      nascError: false, 
     };
+    
   },
   methods: {
     validarNome() {
@@ -131,7 +134,7 @@ export default {
     validarConfemail() {
       this.cemailError = this.cemail !== this.email;
     },
-     validarCPF() {
+    validarCPF() {
       this.cpfSemMascara = this.cpf.replace(/[^0-9]/g, '')
       this.cpfError = this.cpfSemMascara === "";
       this.cpfLengthError = this.cpfSemMascara.length !== 11 && this.cpfSemMascara.length > 0;
@@ -168,9 +171,7 @@ export default {
           this.soma + parseInt(this.cpfSemMascara.substring(i - 1, i)) * (12 - i);
 
       this.resto = (this.soma * 10) % 11;
-
       if (this.resto == 10 || this.resto == 11) this.resto = 0;
-
       if (this.resto != parseInt(this.cpfSemMascara.substring(10, 11)))
         this.cpfLengthError = true
     },
@@ -183,6 +184,16 @@ export default {
       this.nascError = this.nascError === "";
     },
   },
+    logUsuario:() => {
+        axios.get('http://localhost:8082/#')
+        .then(response => {
+          console.log(response.data)
+        })
+        
+        .catch(error => {
+          console.log('TODO ERRO NA REQUISIÇÃO VAI AQUI', error)
+    })
+    }
 };
 </script>
 
@@ -225,7 +236,7 @@ body {
   justify-content: space-between;
   background-color: white;
   font-size: 12px;
-  font-weight:700px;
+  font-weight: 700px;
 }
 
 #full-box {
@@ -482,5 +493,4 @@ h1 {
   font-variant: normal;
 
 }
-
 </style>
