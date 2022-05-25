@@ -9,6 +9,7 @@
     </div>
     <div>
       <div class="container">
+        <img :src="imageUrl"/>
         <div class="Loading"></div>
       </div>
     </div>
@@ -88,7 +89,7 @@
       iaculis nec nibh nisl tellus.
       Amet tellus nunc dolor magna aliquet risus. Habitant neque, id risus diam.
     </p>
-    <a href="#">
+    <a click="checkForm" href="#">
       Continuar
       <div class="arrow-wrapper">
         <div class="arrow"></div>
@@ -111,6 +112,7 @@ export default {
       cpf: "",
       celular: "",
       nasc: "",
+      imageUrl: null,
       nomeError: false,
       nomeLengthError: false,
       emailError: false,
@@ -183,15 +185,35 @@ export default {
     validarNasc() {
       this.nascError = this.nascError === "";
     },
+    checkForm() {
+      const nomeCorreto = this.validarNome();
+      const emailCorreto = this.validarEmail();
+      const cemailCorreto = this.validarConfemail();
+      const cpfCorreto = this.validarCPF();
+      const celularCorreto = this.validarCelular();
+      const nascCorreto = this.validarNasc();
+      
+      if (
+        nomeCorreto &&
+        emailCorreto &&
+        cemailCorreto &&
+        cpfCorreto &&
+        celularCorreto &&
+        nascCorreto
+      ) {
+        this.logUsuario();
+      }
+    } 
   },
-  logUsuario: () => {
-    axios.get('https://api.thecatapi.com/v1/images/search')
+  logUsuario (){
+    axios.get("https://api.thecatapi.com/v1/images/search")
       .then(response => {
-        console.log(response.data)
+        this.imageUrl=response.data[0].url;
+        console.log(response)
       })
 
       .catch(error => {
-        console.log('TODO ERRO NA REQUISIÇÃO VAI AQUI', error)
+        console.log('Usuário não foi encontrado.', error);
       })
   }
 };
