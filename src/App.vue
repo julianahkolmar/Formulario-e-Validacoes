@@ -14,7 +14,7 @@
       </div>
     </div>
     <h1>Seja bem-vindo</h1>
-    <form action="/action_page.php">
+    <form @submit.prevent="checkForm">
       <label for="dados">Dados do contato:</label>
       <p style="font-weight: 600px font-size: 14px; margin-bottom: 5%;">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -89,9 +89,7 @@
       iaculis nec nibh nisl tellus.
       Amet tellus nunc dolor magna aliquet risus. Habitant neque, id risus diam.
     </p>
-    <a click="checkForm" href="#">
-      Continuar
-      <div class="arrow-wrapper">
+    <a type="submit" click="checkForm" href="#" value="Continuar">Continuar<div class="arrow-wrapper">
         <div class="arrow"></div>
       </div>
     </a>
@@ -129,12 +127,15 @@ export default {
     validarNome() {
       this.nomeError = this.nome === "";
       this.nomeLengthError = this.nome.length < 3 && this.nome.length > 0;
+      return false;
     },
     validarEmail() {
       this.emailError = this.email === "";
+      return false;
     },
     validarConfemail() {
       this.cemailError = this.cemail !== this.email;
+      return false;
     },
     validarCPF() {
       this.cpfSemMascara = this.cpf.replace(/[^0-9]/g, '')
@@ -181,32 +182,29 @@ export default {
       this.celularError = this.celular === "";
       this.celularLengthError =
         this.celular.length < 11 && this.celular.length > 0;
+        return false;
     },
     validarNasc() {
       this.nascError = this.nascError === "";
+      return false;
     },
     checkForm() {
-      const nomeCorreto = this.validarNome();
-      const emailCorreto = this.validarEmail();
-      const cemailCorreto = this.validarConfemail();
-      const cpfCorreto = this.validarCPF();
-      const celularCorreto = this.validarCelular();
-      const nascCorreto = this.validarNasc();
+      this.nomeCorreto = this.validarNome();
+      this.emailCorreto = this.validarEmail();
+      this.cemailCorreto = this.validarConfemail();
+      this.cpfCorreto = this.validarCPF();
+      this.celularCorreto = this.validarCelular();
+      this.nascCorreto = this.validarNasc();
       
       if (
-        nomeCorreto &&
-        emailCorreto &&
-        cemailCorreto &&
-        cpfCorreto &&
-        celularCorreto &&
-        nascCorreto
-      ) {
-        this.logUsuario();
-      }
-    } 
-  },
-  logUsuario (){
-    axios.get("https://api.thecatapi.com/v1/images/search")
+        this.nomeCorreto &&
+        this.emailCorreto &&
+        this.cemailCorreto &&
+        this.cpfCorreto &&
+        this.celularCorreto &&
+        this.nascCorreto
+      ) 
+      axios.get("https://api.thecatapi.com/v1/images/search")
       .then(response => {
         this.imageUrl=response.data[0].url;
         console.log(response)
@@ -215,7 +213,9 @@ export default {
       .catch(error => {
         console.log('Usuário não foi encontrado.', error);
       })
-  }
+    } 
+  },
+
 };
 </script>
 
