@@ -9,7 +9,6 @@
     </div>
     <div>
       <div class="container">
-        <img :src="imageUrl"/>
         <div class="Loading"></div>
       </div>
     </div>
@@ -73,8 +72,6 @@
       </div>
       <p style="font-size: 14px; font-weight: 600px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p style="font-size: 14px; margin-bottom: 5%; font-weight: 600px">Mattis semper odio pretium vestibulum nulla.</p>
-    </form>
-    <form>
       <div class="emailSms">
         <input type="checkbox" id="text" name="Email e SMS" />
         <label for="EmailSMS">Email e SMS</label>
@@ -83,16 +80,16 @@
         <input type="checkbox" id="text1" name="WhatsApp" />
         <label for="WhatsApp">WhatsApp</label>
       </div>
-    </form>
     <p style="font-weight: 600pxfont-size: 14px; margin-top: 5%;">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci, volutpat in
       iaculis nec nibh nisl tellus.
       Amet tellus nunc dolor magna aliquet risus. Habitant neque, id risus diam.
     </p>
-    <a type="submit" click="checkForm" href="#" value="Continuar">Continuar<div class="arrow-wrapper">
+    <a type="submit" href="#" value="Continuar">Continuar<div class="arrow-wrapper">
         <div class="arrow"></div>
       </div>
     </a>
+      </form>
     <footer></footer>
   </div>
 </template>
@@ -101,16 +98,16 @@
 
 import axios from "axios"
 export default {
-  data: function () {
-    console.log('CHEGOU AQUI.', this.$data)
-    return {
-      nome: "",
-      email: "",
-      cemail: "",
-      cpf: "",
-      celular: "",
-      nasc: "",
-      imageUrl: null,
+  name: 'App',
+  components: {},
+    data() {
+      return {
+      nome: '',
+      email: '',
+      cemail:'',
+      cpf: '',
+      celular: '',
+      nasc: '',
       nomeError: false,
       nomeLengthError: false,
       emailError: false,
@@ -120,9 +117,9 @@ export default {
       celularError: false,
       celularLengthError: false,
       nascError: false,
-    };
+    }
+    },
 
-  },
   methods: {
     validarNome() {
       this.nomeError = this.nome === "";
@@ -189,6 +186,7 @@ export default {
       return false;
     },
     checkForm() {
+      console.log('chegou!!!')
       this.nomeCorreto = this.validarNome();
       this.emailCorreto = this.validarEmail();
       this.cemailCorreto = this.validarConfemail();
@@ -204,18 +202,18 @@ export default {
         this.celularCorreto &&
         this.nascCorreto
       ) 
-      axios.get("https://api.thecatapi.com/v1/images/search")
+      
+      axios.get("https://app.fakejson.com/q/sIra2Obl?token=tkDFCkZPsnUeU_Bc76Af8w")
       .then(response => {
-        this.imageUrl=response.data[0].url;
-        console.log(response)
+       //*this.=response.data[0].url;
+        console.log(response);
       })
 
       .catch(error => {
         console.log('Usuário não foi encontrado.', error);
       })
-    } 
+    }
   },
-
 };
 </script>
 

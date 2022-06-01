@@ -3,6 +3,4 @@
 </template>
 
 <script>
-
-
 </script>
