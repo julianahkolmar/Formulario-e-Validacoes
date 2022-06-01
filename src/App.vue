@@ -24,7 +24,7 @@
       <div class id="forms">
         <div class id="full-box">
           <label class id="label-style" for="nomeCompleto">NOME COMPLETO</label>
-          <input placeholder="Insira seu nome" type="text" pattern="([aA-zZ]+)" ref="nome" v-model="nome" id="nome"
+          <input placeholder="Insira seu nome" type="text" ref="nome" v-model="nome" id="nome"
             name="nome" required @blur="validarNome" />
           <p v-if="nomeError" class="textError">Nome não pode ser vazio</p>
           <p v-if="nomeLengthError" class="textError">
@@ -64,7 +64,7 @@
         <div>
           <label class id="style-nasc" for="dataNasc" max="2004-05-10">DATA DE NASCIMENTO</label>
           <input id="nasc" type="date" ref="datanasc" v-model="nasc" placeholder="Digite sua data de nascimento"
-            name="celular" class="form-control" @blur="validarNasc" />
+            name="celular" class="form-control" required @blur="validarNasc" />
           <p v-if="nascError" class="textError">
             Data de nascimento não pode ser vazia
           </p>
@@ -85,10 +85,10 @@
       iaculis nec nibh nisl tellus.
       Amet tellus nunc dolor magna aliquet risus. Habitant neque, id risus diam.
     </p>
-    <a type="submit" href="#" value="Continuar">Continuar<div class="arrow-wrapper">
+    <button type="submit" value="Continuar">Continuar<div class="arrow-wrapper">
         <div class="arrow"></div>
       </div>
-    </a>
+    </button>
       </form>
     <footer></footer>
   </div>
@@ -186,7 +186,6 @@ export default {
       return false;
     },
     checkForm() {
-      console.log('chegou!!!')
       this.nomeCorreto = this.validarNome();
       this.emailCorreto = this.validarEmail();
       this.cemailCorreto = this.validarConfemail();
@@ -195,7 +194,7 @@ export default {
       this.nascCorreto = this.validarNasc();
       
       if (
-        this.nomeCorreto &&
+        this.nomeCorreto && 
         this.emailCorreto &&
         this.cemailCorreto &&
         this.cpfCorreto &&
@@ -209,7 +208,7 @@ export default {
         console.log(response);
       })
 
-      .catch(error => {
+      .catch(error => { 
         console.log('Usuário não foi encontrado.', error);
       })
     }
@@ -293,7 +292,7 @@ input:hover {
   transition: 500ms ease-in-out;
 }
 
-a {
+button {
   --primary-color: #e82c54;
   --secondary-color: #fff;
   --hover-color: #111;
@@ -312,18 +311,18 @@ a {
   transition: 0.2s background;
   align-items: center;
   gap: 0.6em;
-  width: 130px;
+  width: 115px;
   height: 40px;
   font-weight: bold;
 }
 
-a .arrow-wrapper {
+button .arrow-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-a .arrow {
+button .arrow {
   margin-top: 1px;
   width: var(--arrow-width);
   background: var(--primary-color);
@@ -332,7 +331,7 @@ a .arrow {
   transition: 0.2s;
 }
 
-a .arrow::before {
+button .arrow::before {
   content: "";
   box-sizing: border-box;
   position: absolute;
@@ -346,11 +345,11 @@ a .arrow::before {
   transform: rotate(-45deg);
 }
 
-a:hover .arrow {
+button:hover .arrow {
   background: var(--secondary-color);
 }
 
-a:hover .arrow:before {
+button:hover .arrow:before {
   right: 0;
 }
 
